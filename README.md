@@ -1,6 +1,6 @@
 # 📌 Doo Bee Doo - A Simple To-Do App
 
-![App Screenshot](C:\Users\91915\Desktop\Flutter\todolist\todolist\Flutter_to_do_list.png)
+![App Screenshot](Flutter_to_do_list.png)
 
 ## 🚀 Features
 - ✅ Add tasks  
