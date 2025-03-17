@@ -13,6 +13,8 @@ class _MainAppState extends State<MainApp> {
   String displayText = "No Data";
   TextEditingController TextEditor = TextEditingController();
 
+  List<String> TaskList = [];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,20 +41,52 @@ class _MainAppState extends State<MainApp> {
             MaterialButton(
               onPressed: (){
                 setState(() {
-                  displayText = TextEditor.text;
+                  TaskList.add(TextEditor.text);
+                  TextEditor.clear();
                 });
               },
               color: Colors.grey,
               padding: EdgeInsets.all(10),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-              child: Text("Click !"),
+              child: Text("Add Task"),
               ),
-              Text(displayText),
-
               ],
-            )
+            ),
 
             
+
+            Flexible(
+              child: ListView.builder(
+                itemCount: TaskList.length,
+                itemBuilder: (context, index){
+                return Row(
+                children: [
+                  Expanded(child: Container(
+                    padding: EdgeInsets.all(10),
+                    child:Row(
+                      children: [
+                        Text(TaskList[index]),
+                        Spacer(),
+                   MaterialButton(
+                    child: Icon(Icons.delete, color: Colors.red),
+                    onPressed: (){
+                      setState(() {
+                        TaskList.removeAt(index);
+                      });
+                    
+                  })
+                      ]
+                      
+                    ),
+              
+              
+                  ))
+                  
+                ],
+              );
+              }),
+            )
+
           ],
         ),
       ),
